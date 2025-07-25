@@ -1,0 +1,20 @@
+﻿CREATE Table Courses(
+CourseId int primary key identity(501,1) not null,
+CourseName varchar(15) not null
+)
+INSERT INTO Courses VALUES('C#'),('J2EE'),('NT')
+CREATE Table Students(
+StudentId int primary key identity(1,1) NOT NULL,
+StudentName varchar(30) not null,
+AdmissionDate DateTime not null,
+MobileNo char(11)  not null,
+IsEnrolled bit not null,
+ImageUrl varchar(max) null,
+CourseId int references Courses(CourseId) on delete cascade on update cascade not null
+)
+CREATE Table Modules(
+ModuleId int primary key identity(201,1) NOT NULL,
+ModuleName varchar(30) not null,
+Duration int not null,
+StudentId int references Students(StudentId) on delete cascade on update cascade not null
+)
